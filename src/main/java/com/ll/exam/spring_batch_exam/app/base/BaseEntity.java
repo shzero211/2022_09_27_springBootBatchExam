@@ -1,4 +1,4 @@
-package com.ll.exam.spring_batch_exam.app.member;
+package com.ll.exam.spring_batch_exam.app.base;
 
 import lombok.Builder;
 import lombok.Getter;
