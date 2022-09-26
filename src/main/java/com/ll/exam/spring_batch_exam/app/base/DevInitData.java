@@ -26,8 +26,8 @@ public class DevInitData {
             Member member3=memberService.join("user3",password,"user3");
             Member member4=memberService.join("user4",password,"user4");
 
-            Product product1=productService.create("단가라",3000,"청평화",Arrays.asList(new ProductOption("RED","44",0),new ProductOption("RED","55",0),new ProductOption("BLUE","44",0),new ProductOption("BLUE","55",0)));
-            Product product2=productService.create("쉬폰",3000,"청평화",Arrays.asList(new ProductOption("BLACK","55",0),new ProductOption("WHITE","55",0),new ProductOption("BLACK","44",0),new ProductOption("WHITE","44",0)));
+            Product product1=productService.create("단가라",3000,2000,"청평화",Arrays.asList(new ProductOption("RED","44"),new ProductOption("RED","55"),new ProductOption("BLUE","44"),new ProductOption("BLUE","55")));
+            Product product2=productService.create("쉬폰",3000,2000,"청평화",Arrays.asList(new ProductOption("BLACK","55"),new ProductOption("WHITE","55"),new ProductOption("BLACK","44"),new ProductOption("WHITE","44")));
 
             ProductOption productOption__RED_44=product1.getProductOptions().get(0);
             ProductOption productOption__BLUE_44=product1.getProductOptions().get(3);

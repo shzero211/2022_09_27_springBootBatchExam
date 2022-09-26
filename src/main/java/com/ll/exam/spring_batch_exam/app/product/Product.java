@@ -21,6 +21,7 @@ import java.util.List;
 public class Product extends BaseEntity {
     private String name;
     private int price;
+    private int wholesalePrice;//도매가
     private String makerShopName;
     private boolean isSoldOut;//상품옵션 모두가 soldout 인경우
 
@@ -30,6 +31,8 @@ public class Product extends BaseEntity {
 
     public void addOption(ProductOption option) {
         option.setProduct(this);
+        option.setPrice(getPrice());
+        option.setWholesalePrice(getWholesalePrice());
         this.productOptions.add(option);
     }
 }
