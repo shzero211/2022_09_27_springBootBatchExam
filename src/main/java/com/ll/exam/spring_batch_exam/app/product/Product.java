@@ -22,6 +22,8 @@ public class Product extends BaseEntity {
     private String name;
     private int price;
     private String makerShopName;
+    private boolean isSoldOut;//상품옵션 모두가 soldout 인경우
+
     @Builder.Default
     @OneToMany(mappedBy = "product",cascade = CascadeType.ALL,orphanRemoval = true)
     private List<ProductOption> productOptions=new ArrayList<>();
