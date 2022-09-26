@@ -24,21 +24,35 @@ public class HelloWorldJobConfig {
     public Job helloWorldJob() {
         return jobBuilderFactory.get("helloWorldJob")
                 .start(helloWorldStep1())
+                .next(helloWorldStep2())
                 .incrementer(new RunIdIncrementer())
                 .build();
     }
     @Bean
     public Step helloWorldStep1() {
         return stepBuilderFactory.get("helloWorldStep1")
-                .tasklet(helloWorldTasklet())
+                .tasklet(helloWorldStep1Tasklet())
                 .build();
     }
 
     @Bean
-    public Tasklet helloWorldTasklet() {
+    public Tasklet helloWorldStep1Tasklet() {
         return (contribution, chunkContext) -> {
             System.out.println("헬로월드!");
 
+            return RepeatStatus.FINISHED;
+        };
+    }
+
+    @Bean
+    public Step helloWorldStep2(){
+        return stepBuilderFactory.get("helloWorldStep2")
+                .tasklet(helloWorldStep2Tasklet()).build();
+    }
+    @Bean
+    public Tasklet helloWorldStep2Tasklet(){
+        return (contribution, chunkContext) -> {
+            System.out.println("헬로월드2!");
             return RepeatStatus.FINISHED;
         };
     }
