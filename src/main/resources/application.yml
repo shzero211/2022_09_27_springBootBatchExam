@@ -1,4 +1,6 @@
 spring:
+  profiles:
+    active: dev
   batch:
     job:
       names: ${job.name:withParamJob}
@@ -11,3 +13,8 @@ spring:
     password: root
   jpa:
     show-sql: true
+    hibernate:
+      ddl-auto: create
+logging:
+  level:
+    com.ll.exam.spring_batch_exam: debug
