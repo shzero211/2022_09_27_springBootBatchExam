@@ -31,6 +31,7 @@ public class DevInitData {
             ProductOption productOption__RED_44=product1.getProductOptions().get(0);
             ProductOption productOption__BLUE_44=product1.getProductOptions().get(3);
             cartService.addItem(member1,productOption__RED_44,1);
+            cartService.addItem(member1,productOption__RED_44,2);
             cartService.addItem(member1,productOption__BLUE_44,2);
         };
     }

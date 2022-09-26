@@ -5,6 +5,7 @@ import com.ll.exam.spring_batch_exam.app.member.Member;
 import com.ll.exam.spring_batch_exam.app.product.ProductOption;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 import lombok.ToString;
 import lombok.experimental.SuperBuilder;
 
@@ -15,6 +16,7 @@ import java.util.Base64;
 
 @Entity
 @Getter
+@Setter
 @NoArgsConstructor
 @SuperBuilder
 @ToString(callSuper = true)
