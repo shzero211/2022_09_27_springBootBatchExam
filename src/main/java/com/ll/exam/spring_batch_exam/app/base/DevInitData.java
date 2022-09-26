@@ -3,8 +3,9 @@ package com.ll.exam.spring_batch_exam.app.base;
 import com.ll.exam.spring_batch_exam.app.cart.CartService;
 import com.ll.exam.spring_batch_exam.app.member.Member;
 import com.ll.exam.spring_batch_exam.app.member.MemberService;
-import com.ll.exam.spring_batch_exam.app.product.ProductOption;
+import com.ll.exam.spring_batch_exam.app.order.OrderService;
 import com.ll.exam.spring_batch_exam.app.product.Product;
+import com.ll.exam.spring_batch_exam.app.product.ProductOption;
 import com.ll.exam.spring_batch_exam.app.product.ProductService;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
@@ -17,7 +18,7 @@ import java.util.Arrays;
 @Profile("dev")
 public class DevInitData {
     @Bean
-    public CommandLineRunner initData(MemberService memberService, ProductService productService, CartService cartService){
+    public CommandLineRunner initData(MemberService memberService, ProductService productService, CartService cartService, OrderService orderService){
         return args -> {
                 String password="{noop}1234";
                 Member member1=memberService.join("user1",password,"user1");
@@ -33,6 +34,8 @@ public class DevInitData {
             cartService.addItem(member1,productOption__RED_44,1);
             cartService.addItem(member1,productOption__RED_44,2);
             cartService.addItem(member1,productOption__BLUE_44,2);
+
+            orderService.createFormCart(member1);
         };
     }
 }

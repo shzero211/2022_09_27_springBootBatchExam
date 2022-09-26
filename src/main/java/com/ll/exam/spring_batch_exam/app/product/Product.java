@@ -27,6 +27,7 @@ public class Product extends BaseEntity {
     @Builder.Default
     @OneToMany(mappedBy = "product",cascade = CascadeType.ALL,orphanRemoval = true)
     private List<ProductOption> productOptions=new ArrayList<>();
+
     public void addOption(ProductOption option) {
         option.setProduct(this);
         this.productOptions.add(option);

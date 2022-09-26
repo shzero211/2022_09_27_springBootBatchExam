@@ -5,7 +5,7 @@ import com.ll.exam.spring_batch_exam.app.product.ProductOption;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import javax.persistence.EntityNotFoundException;
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -25,5 +25,12 @@ public class CartService {
             .quantity(quantity)
             .build();
     return cartItemRepository.save(cartItem);
+    }
+    public List<CartItem> getItemsByMember(Member member){
+        return cartItemRepository.findAllByMemberId(member.getId());
+    }
+
+    public void deleteItem(CartItem cartItem){
+        cartItemRepository.delete(cartItem);
     }
 }

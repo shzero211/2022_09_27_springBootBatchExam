@@ -1,7 +1,6 @@
 package com.ll.exam.spring_batch_exam.app.product;
 
 import com.ll.exam.spring_batch_exam.app.base.BaseEntity;
-import com.ll.exam.spring_batch_exam.app.product.Product;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -29,5 +28,10 @@ public class ProductOption extends BaseEntity {
         this.color=color;
         this.size=size;
         this.price=price;
+    }
+
+    public boolean isOrderable(int quantity) {
+        if(isSoldOut()==false)return true;
+        return getStockQuantity()>=quantity;
     }
 }
