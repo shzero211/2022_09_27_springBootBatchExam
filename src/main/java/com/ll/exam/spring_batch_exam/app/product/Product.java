@@ -20,6 +20,7 @@ import java.util.List;
 @ToString(callSuper = true)
 public class Product extends BaseEntity {
     private String name;
+    private int salePrice;
     private int price;
     private int wholesalePrice;//도매가
     private String makerShopName;
@@ -33,6 +34,7 @@ public class Product extends BaseEntity {
         option.setProduct(this);
         option.setPrice(getPrice());
         option.setWholesalePrice(getWholesalePrice());
+        option.setSalePrice(getSalePrice());
         this.productOptions.add(option);
     }
 }
