@@ -1,4 +1,4 @@
-package com.ll.exam.spring_batch_exam.app;
+package com.ll.exam.spring_batch_exam.app.member;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 

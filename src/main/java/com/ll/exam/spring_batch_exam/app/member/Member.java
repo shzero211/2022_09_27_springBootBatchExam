@@ -1,6 +1,5 @@
-package com.ll.exam.spring_batch_exam.app;
+package com.ll.exam.spring_batch_exam.app.member;
 
-import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
