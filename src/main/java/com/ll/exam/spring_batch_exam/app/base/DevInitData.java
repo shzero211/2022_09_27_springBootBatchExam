@@ -3,6 +3,7 @@ package com.ll.exam.spring_batch_exam.app.base;
 import com.ll.exam.spring_batch_exam.app.cart.CartService;
 import com.ll.exam.spring_batch_exam.app.member.Member;
 import com.ll.exam.spring_batch_exam.app.member.MemberService;
+import com.ll.exam.spring_batch_exam.app.order.Order;
 import com.ll.exam.spring_batch_exam.app.order.OrderService;
 import com.ll.exam.spring_batch_exam.app.product.Product;
 import com.ll.exam.spring_batch_exam.app.product.ProductOption;
@@ -30,16 +31,20 @@ public class DevInitData {
             //2만원충전
             memberService.addCash(member1,20000,"충전__무통장입금");
             memberService.addCash(member1,-5000,"출금__일반");
-            Product product1=productService.create("단가라",3000,2000,"청평화",Arrays.asList(new ProductOption("RED","44"),new ProductOption("RED","55"),new ProductOption("BLUE","44"),new ProductOption("BLUE","55")));
+            memberService.addCash(member1,300_000,"충전__무통장입금");
+            Product product1=productService.create("단가라",5000,2000,"청평화",Arrays.asList(new ProductOption("RED","44"),new ProductOption("RED","55"),new ProductOption("BLUE","44"),new ProductOption("BLUE","55")));
             Product product2=productService.create("쉬폰",3000,2000,"청평화",Arrays.asList(new ProductOption("BLACK","55"),new ProductOption("WHITE","55"),new ProductOption("BLACK","44"),new ProductOption("WHITE","44")));
 
             ProductOption productOption__RED_44=product1.getProductOptions().get(0);
             ProductOption productOption__BLUE_44=product1.getProductOptions().get(3);
-            cartService.addItem(member1,productOption__RED_44,1);
+            cartService.addItem(member1,productOption__RED_44,2);
             cartService.addItem(member1,productOption__RED_44,2);
             cartService.addItem(member1,productOption__BLUE_44,2);
 
-            orderService.createFormCart(member1);
+            Order order1=orderService.createFormCart(member1);
+            int order1PayPrice=order1.calculatePayPrice();
+            orderService.payByRestCashOnly(order1);
+
         };
     }
 }

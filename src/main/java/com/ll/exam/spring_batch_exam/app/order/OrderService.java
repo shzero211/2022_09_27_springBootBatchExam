@@ -3,6 +3,7 @@ package com.ll.exam.spring_batch_exam.app.order;
 import com.ll.exam.spring_batch_exam.app.cart.CartItem;
 import com.ll.exam.spring_batch_exam.app.cart.CartService;
 import com.ll.exam.spring_batch_exam.app.member.Member;
+import com.ll.exam.spring_batch_exam.app.member.MemberService;
 import com.ll.exam.spring_batch_exam.app.product.ProductOption;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -18,7 +19,7 @@ import java.util.List;
 public class OrderService {
     private final CartService cartService;
     private final OrderRepository orderRepository;
-
+    private final MemberService memberService;
     @Transactional
     public Order createFormCart(Member member) {
         List<CartItem> cartItems=cartService.getItemsByMember(member);
@@ -42,5 +43,16 @@ public class OrderService {
         }
         orderRepository.save(order);
         return order;
+    }
+    @Transactional
+    public void payByRestCashOnly(Order order) {
+        Member orderer=order.getMember();
+        long restCash=orderer.getRestCash();
+        int payPrice=order.calculatePayPrice();
+        if(payPrice>restCash){
+            throw new RuntimeException("예치금이 부족합니다.");
+        }
+        memberService.addCash(orderer,payPrice*-1,"주문결제__예치금결제");
+        order.setPaymentDone();
     }
 }
