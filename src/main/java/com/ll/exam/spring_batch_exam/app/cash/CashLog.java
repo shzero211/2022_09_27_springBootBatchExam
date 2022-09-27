@@ -18,4 +18,5 @@ public class CashLog  extends BaseEntity {
     @ManyToOne
     private Member member;
     private long changePrice;
+    private String eventType;
 }

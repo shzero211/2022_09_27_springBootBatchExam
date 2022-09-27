@@ -22,8 +22,8 @@ public Member join(String username,String password,String email){
     return member;
 }
 @Transactional
-public void addCash(Member member,long changePrice){
-    CashLog cashLog=cashLogService.addCash(member,changePrice);
+public void addCash(Member member,long changePrice,String eventType){
+    CashLog cashLog=cashLogService.addCash(member,changePrice,eventType);
     long newRestCash=member.getRestCash()+cashLog.getChangePrice();
     member.setRestCash(newRestCash);
     memberRepository.save(member);

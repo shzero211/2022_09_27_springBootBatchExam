@@ -26,10 +26,10 @@ public class DevInitData {
             Member member3=memberService.join("user3",password,"user3");
             Member member4=memberService.join("user4",password,"user4");
             //만원충전
-            memberService.addCash(member1,10000);
+            memberService.addCash(member1,10000,"충전__무통장입금");
             //2만원충전
-            memberService.addCash(member1,20000);
-            memberService.addCash(member1,-5000);
+            memberService.addCash(member1,20000,"충전__무통장입금");
+            memberService.addCash(member1,-5000,"출금__일반");
             Product product1=productService.create("단가라",3000,2000,"청평화",Arrays.asList(new ProductOption("RED","44"),new ProductOption("RED","55"),new ProductOption("BLUE","44"),new ProductOption("BLUE","55")));
             Product product2=productService.create("쉬폰",3000,2000,"청평화",Arrays.asList(new ProductOption("BLACK","55"),new ProductOption("WHITE","55"),new ProductOption("BLACK","44"),new ProductOption("WHITE","44")));
 

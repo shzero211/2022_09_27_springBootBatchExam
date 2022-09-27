@@ -8,10 +8,11 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 public class CashLogService {
     private final CashLogRepository cashLogRepository;
-public CashLog addCash(Member member ,long changePrice){
+public CashLog addCash(Member member ,long changePrice,String eventType){
   CashLog cashLog=CashLog.builder()
           .member(member)
           .changePrice(changePrice)
+          .eventType(eventType)
           .build();
   return cashLogRepository.save(cashLog);
 }
