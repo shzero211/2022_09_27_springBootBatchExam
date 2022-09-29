@@ -8,6 +8,7 @@ import com.ll.exam.spring_batch_exam.app.order.OrderService;
 import com.ll.exam.spring_batch_exam.app.product.Product;
 import com.ll.exam.spring_batch_exam.app.product.ProductOption;
 import com.ll.exam.spring_batch_exam.app.product.ProductService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -17,6 +18,7 @@ import java.util.Arrays;
 
 @Configuration
 @Profile("dev")
+@Slf4j
 public class DevInitData {
     @Bean
     public CommandLineRunner initData(MemberService memberService, ProductService productService, CartService cartService, OrderService orderService){
@@ -45,6 +47,20 @@ public class DevInitData {
             int order1PayPrice=order1.calculatePayPrice();
             orderService.payByRestCashOnly(order1);
 
+            //2번주문 생성
+            //-장바구니에 담기
+            //-주문 생성성
+            ProductOption product2Option__BLACK_44=product2.getProductOptions().get(0);
+            ProductOption product2Option__WHITE_44=product2.getProductOptions().get(2);
+
+            cartService.addItem(member2,productOption__RED_44,1);
+            cartService.addItem(member2,product2Option__BLACK_44,2);
+            cartService.addItem(member2,product2Option__WHITE_44,2);
+
+            Order order2=orderService.createFormCart(member2);
+            log.debug("order2 payPrice : "+order2.calculatePayPrice());
+            memberService.addCash(member2,17000,"충전__무통장입금");
+            orderService.payByRestCashOnly(order2);
         };
     }
 }
