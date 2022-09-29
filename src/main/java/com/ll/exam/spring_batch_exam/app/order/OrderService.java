@@ -21,7 +21,7 @@ public class OrderService {
     private final OrderRepository orderRepository;
     private final MemberService memberService;
     @Transactional
-    public Order createFormCart(Member member) {
+    public Order createFromCart(Member member) {
         List<CartItem> cartItems=cartService.getItemsByMember(member);
         List<OrderItem> orderItems=new ArrayList<>();
         for(CartItem cartItem:cartItems){
