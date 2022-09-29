@@ -61,6 +61,7 @@ public class DevInitData {
             log.debug("order2 payPrice : "+order2.calculatePayPrice());
             memberService.addCash(member2,17000,"충전__무통장입금");
             orderService.payByRestCashOnly(order2);
+            orderService.refund(order2);
         };
     }
 }

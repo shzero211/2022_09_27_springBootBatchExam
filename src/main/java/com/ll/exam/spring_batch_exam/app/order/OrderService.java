@@ -55,4 +55,9 @@ public class OrderService {
         memberService.addCash(orderer,payPrice*-1,"주문결제__예치금결제");
         order.setPaymentDone();
     }
+
+    public void refund(Order order) {
+        order.setRefundDone();
+        orderRepository.save(order);
+    }
 }
