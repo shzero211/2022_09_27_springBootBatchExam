@@ -1,4 +1,4 @@
-package com.ll.exam.spring_batch_exam.app.order;
+package com.ll.exam.spring_batch_exam.app.order.entity;
 
 import com.ll.exam.spring_batch_exam.app.base.BaseEntity;
 import com.ll.exam.spring_batch_exam.app.product.ProductOption;

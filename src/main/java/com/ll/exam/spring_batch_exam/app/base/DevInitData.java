@@ -3,7 +3,7 @@ package com.ll.exam.spring_batch_exam.app.base;
 import com.ll.exam.spring_batch_exam.app.cart.CartService;
 import com.ll.exam.spring_batch_exam.app.member.Member;
 import com.ll.exam.spring_batch_exam.app.member.MemberService;
-import com.ll.exam.spring_batch_exam.app.order.Order;
+import com.ll.exam.spring_batch_exam.app.order.entity.Order;
 import com.ll.exam.spring_batch_exam.app.order.OrderService;
 import com.ll.exam.spring_batch_exam.app.product.entity.Product;
 import com.ll.exam.spring_batch_exam.app.product.ProductOption;

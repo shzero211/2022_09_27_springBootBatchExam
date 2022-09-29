@@ -1,8 +1,7 @@
-package com.ll.exam.spring_batch_exam.app.order;
+package com.ll.exam.spring_batch_exam.app.order.entity;
 
 import com.ll.exam.spring_batch_exam.app.base.BaseEntity;
 import com.ll.exam.spring_batch_exam.app.member.Member;
-import io.micrometer.core.instrument.util.AbstractPartition;
 import lombok.*;
 import lombok.experimental.SuperBuilder;
 
