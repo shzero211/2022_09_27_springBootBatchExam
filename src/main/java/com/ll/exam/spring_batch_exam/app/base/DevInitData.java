@@ -22,9 +22,13 @@ import java.util.List;
 @Profile("dev")
 @Slf4j
 public class DevInitData {
+    private boolean initDataDone=false;
     @Bean
     public CommandLineRunner initData(MemberService memberService, ProductService productService, CartService cartService, OrderService orderService){
         return args -> {
+            if(initDataDone) return;
+            initDataDone=true;
+
             class Helper{
                 public Order order(Member member, List<ProductOption> productOptions){
                     for(int i=0;i<productOptions.size();i++){
@@ -42,7 +46,7 @@ public class DevInitData {
             Member member3=memberService.join("user3",password,"user3");
             Member member4=memberService.join("user4",password,"user4");
             //만원충전
-            memberService.addCash(member1,10000,"충전__무통장입금");
+            memberService.addCash(member1,1_000_000,"충전__무통장입금");
             //2만원충전
             memberService.addCash(member1,20000,"충전__무통장입금");
             memberService.addCash(member1,-5000,"출금__일반");
@@ -68,7 +72,7 @@ public class DevInitData {
             ProductOption product2Option__WHITE_55=product2.getProductOptions().get(3);
             Order order2=helper.order(member2, Arrays.asList(product1Option__RED_44,product2Option__BLACK_44,product2Option__WHITE_44));
             log.debug("order2 payPrice : "+order2.calculatePayPrice());
-            memberService.addCash(member2,17000,"충전__무통장입금");
+            memberService.addCash(member2,1_000_000,"충전__무통장입금");
             orderService.payByRestCashOnly(order2);
             orderService.refund(order2);
 
