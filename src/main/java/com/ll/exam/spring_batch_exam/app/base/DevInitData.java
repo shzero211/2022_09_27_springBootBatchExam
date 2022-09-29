@@ -5,7 +5,7 @@ import com.ll.exam.spring_batch_exam.app.member.Member;
 import com.ll.exam.spring_batch_exam.app.member.MemberService;
 import com.ll.exam.spring_batch_exam.app.order.Order;
 import com.ll.exam.spring_batch_exam.app.order.OrderService;
-import com.ll.exam.spring_batch_exam.app.product.Product;
+import com.ll.exam.spring_batch_exam.app.product.entity.Product;
 import com.ll.exam.spring_batch_exam.app.product.ProductOption;
 import com.ll.exam.spring_batch_exam.app.product.ProductService;
 import lombok.extern.slf4j.Slf4j;
@@ -14,7 +14,6 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
 
-import java.lang.reflect.Array;
 import java.util.Arrays;
 import java.util.List;
 

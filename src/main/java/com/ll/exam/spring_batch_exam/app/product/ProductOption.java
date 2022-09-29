@@ -1,6 +1,7 @@
 package com.ll.exam.spring_batch_exam.app.product;
 
 import com.ll.exam.spring_batch_exam.app.base.BaseEntity;
+import com.ll.exam.spring_batch_exam.app.product.entity.Product;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
