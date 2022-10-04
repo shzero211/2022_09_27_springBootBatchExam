@@ -3,10 +3,6 @@ import com.ll.exam.spring_batch_exam.app.order.entity.OrderItem;
 import com.ll.exam.spring_batch_exam.app.order.entity.RebateOrderItem;
 import com.ll.exam.spring_batch_exam.app.order.repository.OrderItemRepository;
 import com.ll.exam.spring_batch_exam.app.order.repository.RebateOrderItemRepository;
-import com.ll.exam.spring_batch_exam.app.product.entity.Product;
-import com.ll.exam.spring_batch_exam.app.product.entity.ProductBackup;
-import com.ll.exam.spring_batch_exam.app.product.repository.ProductBackupRepository;
-import com.ll.exam.spring_batch_exam.app.product.repository.ProductRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.batch.core.Job;
@@ -67,8 +63,8 @@ public class makeRebateOrderItemJobConfig {
     @StepScope
     @Bean
     public RepositoryItemReader<OrderItem> orderItemReader(
-            @Value("#{jobParameters['fromId']}") String fromId,
-            @Value("#{jobParameters['toId']}") long toId
+            @Value("#{jobParameters['fromId']}") Long fromId,
+            @Value("#{jobParameters['toId']}") Long toId
     ) {
         return new RepositoryItemReaderBuilder<OrderItem>()
                 .name("orderItemReader")
