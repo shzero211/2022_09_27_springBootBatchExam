@@ -46,6 +46,8 @@ public class RebateOrderItem extends BaseEntity {
     private boolean isPaid;//결제 여부
 
     private String productName;
+
+    private LocalDateTime payDate;
     @Embedded
     @AttributeOverrides({
             @AttributeOverride(name = "color", column = @Column(name = "product_option_color")),
@@ -76,6 +78,8 @@ public class RebateOrderItem extends BaseEntity {
         productName=orderItem.getProductOption().getProduct().getName();
 
         orderItemCreateDate=orderItem.getCreateDate();
+
+        payDate=orderItem.getPayDate();
     }
     @Embeddable
     @NoArgsConstructor

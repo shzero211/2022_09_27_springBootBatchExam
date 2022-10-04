@@ -11,6 +11,7 @@ import lombok.experimental.SuperBuilder;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.ManyToOne;
+import java.time.LocalDateTime;
 
 @Getter
 @Setter
@@ -36,7 +37,7 @@ public class OrderItem extends BaseEntity {
     private int refundPrice;//환불금액
     private int refundQuantity;//환불할 개수
     private boolean isPaid;//결제 여부
-
+    private LocalDateTime payDate;
     public OrderItem(ProductOption productOption,int quantity){
         this.price=productOption.getPrice();
         this.salePrice=productOption.getSalePrice();
@@ -53,6 +54,7 @@ public class OrderItem extends BaseEntity {
         this.pgFee=0;
         this. payPrice=calculatePayPrice();
         this.isPaid=true;
+        this.payDate=LocalDateTime.now();
     }
 
     public void setRefundDone() {
